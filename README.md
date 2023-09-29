@@ -6,6 +6,10 @@ Author: **Elías Herrero Lázaro**
 
 [+] setUp() method for inicialization in tests. (to avoid *Constructor Inicialization* test smell)
 
-## Notes
+## Run TestSmellDetector
 
-.csv file is called *files.csv*. Is in the root dir. of the project.
+*files.csv* is in the root dir. of the project. If you have the *.jar* file in the root dir., this command generates the report.
+
+``` bash
+java -jar TestSmellDetector.jar "./files.csv"
+```
