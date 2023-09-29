@@ -22,14 +22,38 @@ class CalculatorTest {
 
 	@Test
 	public void test_add(){
-		int sizeExpected = 5;
+		int sizeExpected = 6;
 		Vector<Double> vector = new Vector<>();
 
-		vector.add(0, 13.43);
-		vector.add(1, 5.0);
-		vector.add(2, 124910.0);
-		vector.add(3, 410.5);
-		vector.add(4, 1.0);
+		vector.add(13.43);
+		vector.add(5.0);
+		vector.add(124910.0);
+		vector.add(410.5);
+		vector.add(1.0);
+
+		calculator.add(102.0);
+
+		vector.add(102.0);
+
+		assertEquals(sizeExpected, calculator.numbers.size());
+		assertEquals(vector, calculator.numbers);
+	}
+
+	@Test
+	public void test_add_repeated_num(){
+		int sizeExpected = 7;
+		Vector<Double> vector = new Vector<>();
+		vector.add(13.43);
+		vector.add(5.0);
+		vector.add(124910.0);
+		vector.add(410.5);
+		vector.add(1.0);
+
+		calculator.add(100);
+		calculator.add(100);
+
+		vector.add(100.0);
+		vector.add(100.0);
 
 		assertEquals(sizeExpected, calculator.numbers.size());
 		assertEquals(vector, calculator.numbers);
@@ -47,6 +71,58 @@ class CalculatorTest {
 		calculator.remove(5.0);
 
 		int sizeExpected = 3;
+		assertEquals(sizeExpected, calculator.numbers.size());
+		assertEquals(vector, calculator.numbers);
+	}
+
+	@Test
+	public void test_remove_not_found_number(){
+		assertThrows(IndexOutOfBoundsException.class, () -> {
+			calculator.remove(20);
+		});
+	}
+
+
+	@Test
+	public void test_add_and_remove(){
+		calculator.remove(1.0);
+		calculator.remove(5.0);
+
+		calculator.add(25.0);
+		calculator.add(80.0);
+
+		calculator.remove(410.5);
+
+
+		Vector<Double> vector = new Vector<>();
+
+		vector.add(13.43);
+		vector.add(124910.0);
+		vector.add(25.0);
+		vector.add(80.0);
+
+
+		int sizeExpected = 4;
+		assertEquals(sizeExpected, calculator.numbers.size());
+		assertEquals(vector, calculator.numbers);
+	}
+
+	@Test
+	public void test_remove_repeated_number(){
+		calculator.add(25.0);
+		calculator.add(25.0);
+
+		calculator.remove(25.0);
+
+		Vector<Double> vector = new Vector<>();
+		vector.add(13.43);
+		vector.add(5.0);
+		vector.add(124910.0);
+		vector.add(410.5);
+		vector.add(1.0);
+		vector.add(25.0);
+
+		int sizeExpected = 6;
 		assertEquals(sizeExpected, calculator.numbers.size());
 		assertEquals(vector, calculator.numbers);
 	}
