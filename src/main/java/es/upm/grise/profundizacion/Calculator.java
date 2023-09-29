@@ -45,6 +45,11 @@ public class Calculator {
 		return sum_respect_average() / (count() - 1);
 	}
 	
+	// inicializa la calculadora
+	public void setUp() { 
+		numbers = new Vector<Double>();
+	}
+
 	// Private methods
 	//
 	private double sum() {
