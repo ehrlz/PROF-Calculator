@@ -1,0 +1,6 @@
+[submodule "jnose"]
+	path = jnose
+	url = git@github.com:arieslab/jnose.git
+[submodule "jnose-core"]
+	path = jnose-core
+	url = https://github.com/arieslab/jnose-core
